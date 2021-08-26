@@ -124,4 +124,37 @@ header {
     border-top-right-radius: 3px;
     padding-left: 5px;
 }
+
+.contact-list {
+   list-style: none; 
+}
+
+.list-avatar {
+    padding: 8px 0;
+    border-bottom: 1px solid #eaeaea;
+}
   
+#chat-screen {
+    height: calc(100% - 120px);
+    background-image: url(../img/mine.jpg);
+}
+
+footer {
+    height: 60px;
+    background-color: #f3eeea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6b7376;
+    padding: 0 15px;
+    font-size: 1.5em;
+}
+
+footer input {
+    height: 35px;
+    flex-grow: 1;
+    margin: 0 15px;
+    padding-left: 5px;
+    border-color: transparent;
+    border-radius: 3px;
+}
