@@ -137,6 +137,8 @@ header {
 #chat-screen {
     height: calc(100% - 120px);
     background-image: url(../img/mine.jpg);
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
@@ -157,4 +159,26 @@ footer input {
     padding-left: 5px;
     border-color: transparent;
     border-radius: 3px;
+}
+
+.msg{
+    width: 200px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    padding: 10px;
+    margin: 10px;
+}
+
+.time-stamp {
+    text-align: right;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+.received {
+    background-color: white;
+    align-self: flex-start;
 }
