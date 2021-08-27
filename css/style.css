@@ -140,6 +140,7 @@ header {
   
 #chat-main {
     height: calc(100% - 120px);
+    overflow-y: auto;
     background-image: url(../img/mine.jpg);
     display: flex;
     flex-direction: column;
@@ -171,6 +172,7 @@ footer input {
     border-radius: 8px;
     font-size: 0.85em;
     display: flex;
+    flex-shrink: 0;
     margin: 10px 50px;
     position: relative;
 }
