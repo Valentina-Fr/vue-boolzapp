@@ -138,7 +138,7 @@ header {
     background-color: #eaeaea;
 }
   
-#chat-screen {
+#chat-main {
     height: calc(100% - 120px);
     background-image: url(../img/mine.jpg);
     display: flex;

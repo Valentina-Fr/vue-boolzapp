@@ -43,7 +43,7 @@
                 </section>
                 <!-- Lista contatti -->
                 <ul class="contact-list">
-                    <li class="list-avatar" v-for="contact in data.contacts">
+                    <li class="list-avatar" v-for="(contact, index) in data.contacts" @click="setIndex(index)">
                         <img class="avatar-img" :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                         <span>{{contact.name}}</span>
                     </li>
@@ -54,9 +54,9 @@
                 <!-- Header -->
                 <header>
                     <section class="avatar">
-                        <img class="avatar-img" src="./img/avatar_1.jpg" alt="Michele">
+                        <img class="avatar-img" :src="`./img/avatar${data.contacts[index].avatar}.jpg`" alt="Michele">
                         <div class="contact-info"> 
-                            <div>Michele</div>
+                            <div>{{data.contacts[index].name}}</div>
                             <div class="font-small">Ultimo accesso oggi alle</div>
                         </div>
                     </section>
@@ -67,18 +67,11 @@
                     </section>
                 </header>
                 <!-- Main -->
-                <main id="chat-screen">
-                    <div class="msg sent">
-                        <div class="msg-text">Hai portato a spasso il cane?</div>
-                        <div class="font-small time-stamp">10/01/2020 15:30:55</div>
-                    </div>
-                    <div class="msg sent">
-                        <div class="msg-text">Ricordati di dargli da mangiare</div>
-                        <div class="font-small time-stamp">10/01/2020 15:30:55</div>
-                    </div>
-                    <div class="msg received">
-                        <div class="msg-text">Tutto fatto!</div>
-                        <div class="font-small time-stamp">10/01/2020 15:30:55</div>
+                <main id="chat-main">
+                    <div :class="`msg ${item.status}`" 
+                        v-for="item in data.contacts[index].messages">
+                        <div class="msg-text">{{item.message}}</div>
+                        <div class="font-small time-stamp">{{item.date}}</div>
                     </div>
                 </main>
                 <!-- Footer -->
