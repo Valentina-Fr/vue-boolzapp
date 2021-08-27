@@ -21,7 +21,7 @@ body {
 }
 
 /* Chat */
-#chat {
+#app {
     height: 550px;
     width: 900px;
     display: flex;
@@ -30,7 +30,6 @@ body {
 
 .col-4 {
     width: calc(100% / 3);
-    border-right: 1px solid blue;
 }
 
 .col-8 {
@@ -126,12 +125,17 @@ header {
 }
 
 .contact-list {
-   list-style: none; 
+    list-style: none; 
 }
 
 .list-avatar {
     padding: 8px 0;
     border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.3s;
+}
+
+.list-avatar:hover {
+    background-color: #eaeaea;
 }
   
 #chat-screen {
@@ -163,14 +167,23 @@ footer input {
 
 .msg{
     width: 200px;
+    height: 50px;
     border-radius: 8px;
     font-size: 0.85em;
-    padding: 10px;
-    margin: 10px;
+    display: flex;
+    margin: 10px 50px;
+    position: relative;
+}
+
+.msg-text {
+    align-self: center;
+    padding-left: 10px;
 }
 
 .time-stamp {
-    text-align: right;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
 }
 
 .sent {

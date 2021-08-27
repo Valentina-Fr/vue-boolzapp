@@ -7,15 +7,18 @@
     <title>Boolzapp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
     <div class="container">
-        <div id="chat">
+        <div id="app">
+            <!-- Contatti -->
             <div class="col-4">
+                <!-- Header -->
                 <header>
                     <div class="avatar">
-                        <img class="avatar-img" src="./img/avatar_io.jpg" alt="avatar-io">
-                        <span>Nome Utente</span>
+                        <img class="avatar-img" :src="`./img/avatar${data.user.avatar}.jpg`" :alt="data.user.name">
+                        <span>{{data.user.name}}</span>
                     </div>
                     <div class="icons">
                         <i class="fas fa-circle-notch"></i>
@@ -23,7 +26,8 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </header>
-                <div class="notification">
+                <!-- Notifiche -->
+                <section class="notification">
                     <div class="silence">
                         <i class="fas fa-bell-slash"></i>
                     </div>
@@ -31,47 +35,53 @@
                         <div>Ricevi notifiche di nuovi messaggi</div>
                         <div class="underlined">Attiva notifiche desktop</div>
                     </div>
-                </div>
-                <div class="search-form">
+                </section>
+                <!-- Ricerca -->
+                <section class="search-form">
                     <i class="fas fa-search"></i>
                     <input class="search-chat" type="text" placeholder="Cerca o inizia una nuova chat">
-                </div>
+                </section>
+                <!-- Lista contatti -->
                 <ul class="contact-list">
-                    <li class="list-avatar">
-                        <img class="avatar-img" src="./img/avatar_1.jpg" alt="Michele">
-                        <span>Michele</span>
+                    <li class="list-avatar" v-for="contact in data.contacts">
+                        <img class="avatar-img" :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                        <span>{{contact.name}}</span>
                     </li>
                 </ul>
             </div>
+            <!-- Chat -->
             <div class="col-8">
+                <!-- Header -->
                 <header>
-                    <div class="avatar">
+                    <section class="avatar">
                         <img class="avatar-img" src="./img/avatar_1.jpg" alt="Michele">
                         <div class="contact-info"> 
                             <div>Michele</div>
                             <div class="font-small">Ultimo accesso oggi alle</div>
                         </div>
-                    </div>
-                    <div class="icons">
+                    </section>
+                    <section class="icons">
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip"></i>
                         <i class="fas fa-ellipsis-v"></i>
-                    </div>
+                    </section>
                 </header>
+                <!-- Main -->
                 <main id="chat-screen">
                     <div class="msg sent">
-                        <div>Hai portato a spasso il cane?</div>
+                        <div class="msg-text">Hai portato a spasso il cane?</div>
                         <div class="font-small time-stamp">10/01/2020 15:30:55</div>
                     </div>
                     <div class="msg sent">
-                        <div>Ricordati di dargli da mangiare</div>
+                        <div class="msg-text">Ricordati di dargli da mangiare</div>
                         <div class="font-small time-stamp">10/01/2020 15:30:55</div>
                     </div>
                     <div class="msg received">
-                        <div>Tutto fatto!</div>
+                        <div class="msg-text">Tutto fatto!</div>
                         <div class="font-small time-stamp">10/01/2020 15:30:55</div>
                     </div>
                 </main>
+                <!-- Footer -->
                 <footer>
                     <i class="far fa-smile"></i>
                     <input type="text" placeholder="Scrivi un messaggio">
@@ -80,5 +90,7 @@
             </div>
         </div>
     </div>
+    <script src="./js/data.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
