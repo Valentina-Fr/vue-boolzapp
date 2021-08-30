@@ -35,6 +35,14 @@ const app = new Vue ({
             const searchUp = this.searchItem.trim().toUpperCase();
             const contactName = contact.name.toUpperCase();
             return contactName.includes(searchUp);
+        },
+
+        removeText(index){
+            this.data.contacts[this.index].messages.splice(index, 1);
+        },
+
+        lastSeen(contact){
+            return contact.messages[contact.messages.length - 1].date;
         }
     } 
 });

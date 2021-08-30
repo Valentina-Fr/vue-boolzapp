@@ -48,14 +48,15 @@
                 </section>
                 <!-- Lista contatti -->
                 <ul class="contact-list">
-                    <li class="list-avatar" 
-                     v-for="(contact, index) in data.contacts" 
+                    <li :class="[`list-avatar`, {active: contactIndex === index}]" 
+                     v-for="(contact, contactIndex) in data.contacts" 
                      v-if="selectContact(contact)"
-                     @click="setIndex(index)">
+                     @click="setIndex(contactIndex)">
                         <img class="avatar-img" 
                         :src="`./img/avatar${contact.avatar}.jpg`" 
                         :alt="contact.name">
                         <span>{{contact.name}}</span>
+                        <div class="font-small">{{lastSeen(contact)}}</div>
                     </li>
                 </ul>
             </div>
@@ -69,7 +70,7 @@
                         :alt="data.contacts[index].name">
                         <div class="contact-info"> 
                             <div>{{data.contacts[index].name}}</div>
-                            <div class="font-small">Ultimo accesso oggi alle</div>
+                            <div class="font-small">Ultimo accesso {{lastSeen(data.contacts[index])}}</div>
                         </div>
                     </section>
                     <section class="icons">
@@ -81,12 +82,12 @@
                 <!-- Main -->
                 <main id="chat-main">
                     <div :class="`msg ${item.status}`" 
-                    v-for="item in data.contacts[index].messages">
+                    v-for="(item, index) in data.contacts[index].messages">
                         <div class="caret">
                             <i class="fas fa-angle-down"></i>
                             <div class="dropdown">
                                 <div class="dropdown-text">Info messaggio</div>
-                                <div class="dropdown-text">Cancella</div>
+                                <div class="dropdown-text" @click="removeText(index)">Cancella</div>
                             </div>    
                         </div>
                         <div class="msg-text">{{item.message}}</div>
