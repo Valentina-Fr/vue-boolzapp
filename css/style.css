@@ -166,7 +166,7 @@ footer input {
     border-radius: 3px;
 }
 
-.msg{
+.msg {
     width: 200px;
     height: 50px;
     border-radius: 8px;
@@ -177,16 +177,49 @@ footer input {
     position: relative;
 }
 
+.caret {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding-left: 10px;
+    display: none;
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    width: 100px;
+    z-index: 1;
+    display: none;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    padding: 5px 0;
+}
+
+.dropdown-text {
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.msg:hover .caret, .caret:hover .dropdown{
+    display: block;
+}
+
+.dropdown-text:hover {
+    background-color: #eaeaea;
+}
+
 .msg-text {
     align-self: center;
     padding-left: 10px;
-}
+}    
 
 .time-stamp {
     position: absolute;
     bottom: 3px;
     right: 3px;
-}
+}    
 
 .sent {
     background-color: #d5f9ba;

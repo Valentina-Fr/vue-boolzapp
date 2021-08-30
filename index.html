@@ -82,6 +82,13 @@
                 <main id="chat-main">
                     <div :class="`msg ${item.status}`" 
                     v-for="item in data.contacts[index].messages">
+                        <div class="caret">
+                            <i class="fas fa-angle-down"></i>
+                            <div class="dropdown">
+                                <div class="dropdown-text">Info messaggio</div>
+                                <div class="dropdown-text">Cancella</div>
+                            </div>    
+                        </div>
                         <div class="msg-text">{{item.message}}</div>
                         <div class="font-small time-stamp">{{item.date}}</div>
                     </div>
