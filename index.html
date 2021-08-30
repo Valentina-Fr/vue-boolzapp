@@ -19,7 +19,9 @@
                 <!-- Header -->
                 <header>
                     <div class="avatar">
-                        <img class="avatar-img" :src="`./img/avatar${data.user.avatar}.jpg`" :alt="data.user.name">
+                        <img class="avatar-img" 
+                        :src="`./img/avatar${data.user.avatar}.jpg`" 
+                        :alt="data.user.name">
                         <span>{{data.user.name}}</span>
                     </div>
                     <div class="icons">
@@ -41,12 +43,18 @@
                 <!-- Ricerca -->
                 <section class="search-form">
                     <i class="fas fa-search"></i>
-                    <input class="search-chat" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input class="search-chat" type="text" placeholder="Cerca o inizia una nuova chat" 
+                    v-model="searchItem"> 
                 </section>
                 <!-- Lista contatti -->
                 <ul class="contact-list">
-                    <li class="list-avatar" v-for="(contact, index) in data.contacts" @click="setIndex(index)">
-                        <img class="avatar-img" :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                    <li class="list-avatar" 
+                     v-for="(contact, index) in data.contacts" 
+                     v-if="selectContact(contact)"
+                     @click="setIndex(index)">
+                        <img class="avatar-img" 
+                        :src="`./img/avatar${contact.avatar}.jpg`" 
+                        :alt="contact.name">
                         <span>{{contact.name}}</span>
                     </li>
                 </ul>
@@ -56,7 +64,9 @@
                 <!-- Header -->
                 <header>
                     <section class="avatar">
-                        <img class="avatar-img" :src="`./img/avatar${data.contacts[index].avatar}.jpg`" alt="Michele">
+                        <img class="avatar-img" 
+                        :src="`./img/avatar${data.contacts[index].avatar}.jpg`" 
+                        :alt="data.contacts[index].name">
                         <div class="contact-info"> 
                             <div>{{data.contacts[index].name}}</div>
                             <div class="font-small">Ultimo accesso oggi alle</div>
@@ -71,7 +81,7 @@
                 <!-- Main -->
                 <main id="chat-main">
                     <div :class="`msg ${item.status}`" 
-                        v-for="item in data.contacts[index].messages">
+                    v-for="item in data.contacts[index].messages">
                         <div class="msg-text">{{item.message}}</div>
                         <div class="font-small time-stamp">{{item.date}}</div>
                     </div>
@@ -79,7 +89,9 @@
                 <!-- Footer -->
                 <footer>
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio" v-model="msg" @keyup.enter="sendMsg">
+                    <input type="text" placeholder="Scrivi un messaggio" 
+                    v-model.trim="msg" 
+                    @keyup.enter="sendMsg">
                     <i class="fas fa-microphone"></i>
                 </footer>
             </div>

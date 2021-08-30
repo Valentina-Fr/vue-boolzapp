@@ -8,6 +8,7 @@ const app = new Vue ({
         data,
         index: 0,
         msg:"",
+        searchItem: ""
     },
     methods: {  
         setIndex(index){
@@ -15,27 +16,26 @@ const app = new Vue ({
         },
 
         sendMsg(){
-            const newMsg = {
-                date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-                message: this.msg,
-                status: "sent"
-            };
-
-            this.data.contacts[this.index].messages.push(newMsg);
+            if(this.msg === "") return;
+            this.newMsg(this.msg, "sent");
             this.msg = "";
-
-            setTimeout(this.sayOk, 1000);
+            setTimeout(() => {this.newMsg("ok", "received")}, 1000);
         }, 
 
-        sayOk(){
-            const answer = {
+        newMsg(message, status){
+            const newMsg = {
                 date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-                message: "ok",
-                status: "received"
+                message,
+                status
             };
+            this.data.contacts[this.index].messages.push(newMsg);
+        },
 
-            this.data.contacts[this.index].messages.push(answer);
+        selectContact(contact){
+            const searchUp = this.searchItem.trim().toUpperCase();
+            const contactName = contact.name.toUpperCase();
+            return contactName.includes(searchUp);
         }
-    }
+    } 
 });
 
