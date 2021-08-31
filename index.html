@@ -55,8 +55,11 @@
                         <img class="avatar-img" 
                         :src="`./img/avatar${contact.avatar}.jpg`" 
                         :alt="contact.name">
-                        <span>{{contact.name}}</span>
-                        <div class="font-small">{{lastSeen(contact)}}</div>
+                        <div class="contact-info">
+                            <div>{{contact.name}}</div>
+                            <div class="font-small last-text">{{lastText(contact)}}</div>
+                        </div>
+                        <div class="font-small last-seen">{{lastSeen(contact)}}</div>
                     </li>
                 </ul>
             </div>
