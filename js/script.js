@@ -42,6 +42,7 @@ const app = new Vue ({
         },
 
         lastSeen(contact){
+            if(!contact.messages.length) return;
             return contact.messages[contact.messages.length - 1].date;
         }
     } 
