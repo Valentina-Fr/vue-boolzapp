@@ -8,11 +8,16 @@ const app = new Vue ({
         data,
         index: 0,
         msg:"",
-        searchItem: ""
+        searchItem: "",
+        contactList: []
     },
     methods: {  
         setIndex(index){
             this.index = index;
+            this.contactList.forEach(contact => {
+                contact.visible = true;
+            }); 
+            this.searchItem = "";
         },
 
         sendMsg(){
@@ -31,10 +36,13 @@ const app = new Vue ({
             this.data.contacts[this.index].messages.push(newMsg);
         },
 
-        selectContact(contact){
-            const searchUp = this.searchItem.trim().toUpperCase();
-            const contactName = contact.name.toUpperCase();
-            return contactName.includes(searchUp);
+        selectContact(){
+            const searchUp = this.searchItem.toUpperCase();
+            this.contactList.forEach(contact => {
+                if(!contact.name.toUpperCase().includes(searchUp)){
+                    contact.visible = false;
+                }
+            });  
         },
 
         removeText(index){
@@ -50,6 +58,9 @@ const app = new Vue ({
             if(!contact.messages.length) return;
             return contact.messages[contact.messages.length - 1].message;
         }
+    },
+    created () {
+        this.contactList = this.data.contacts.filter ((contact) => {return contact.visible});   
     } 
 });
 

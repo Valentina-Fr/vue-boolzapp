@@ -44,13 +44,14 @@
                 <section class="search-form">
                     <i class="fas fa-search"></i>
                     <input class="search-chat" type="text" placeholder="Cerca o inizia una nuova chat" 
-                    v-model="searchItem"> 
+                    v-model.trim="searchItem"
+                    @keydown="selectContact"> 
                 </section>
                 <!-- Lista contatti -->
                 <ul class="contact-list">
                     <li :class="[`list-avatar`, {active: contactIndex === index}]" 
-                     v-for="(contact, contactIndex) in data.contacts" 
-                     v-if="selectContact(contact)"
+                     v-for="(contact, contactIndex) in contactList" 
+                     v-if="contact.visible"
                      @click="setIndex(contactIndex)">
                         <img class="avatar-img" 
                         :src="`./img/avatar${contact.avatar}.jpg`" 
