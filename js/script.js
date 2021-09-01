@@ -9,12 +9,12 @@ const app = new Vue ({
         index: 0,
         msg:"",
         searchItem: "",
-        contactList: []
+        visibleContacts: []
     },
     methods: {  
         setIndex(index){
             this.index = index;
-            this.contactList.forEach(contact => {
+            this.visibleContacts.forEach(contact => {
                 contact.visible = true;
             }); 
             this.searchItem = "";
@@ -38,9 +38,11 @@ const app = new Vue ({
 
         selectContact(){
             const searchUp = this.searchItem.toUpperCase();
-            this.contactList.forEach(contact => {
+            this.visibleContacts.forEach(contact => {
                 if(!contact.name.toUpperCase().includes(searchUp)){
                     contact.visible = false;
+                } else {
+                    contact.visible = true;
                 }
             });  
         },
@@ -60,7 +62,7 @@ const app = new Vue ({
         }
     },
     created () {
-        this.contactList = this.data.contacts.filter ((contact) => {return contact.visible});   
+        this.visibleContacts = this.data.contacts.filter ((contact) => {return contact.visible});   
     } 
 });
 
